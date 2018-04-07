@@ -14,6 +14,10 @@ module Gitajob
     def probe
       times = start_probe
       format_average_request_time(times)
+    rescue Errno::ECONNREFUSED
+      puts "Unable to connect. Check your website and try again."
+    rescue URI::InvalidURIError
+      puts "The provided website is invalid. Check your website and try again."
     end
 
     private
