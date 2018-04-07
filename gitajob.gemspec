@@ -9,8 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["w.hayshopkins@gmail.com"]
   spec.email         = ["w.hayshopkins@gmail.com"]
 
-  spec.summary       = "Probe gitlab (or any website) and get the average response time"
-  spec.description   = "This program checks the health of a given website."
+  spec.description   = "This program checks the health of a given website via the CLI. Run bin/gitajob for more info."
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
