@@ -10,6 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["w.hayshopkins@gmail.com"]
 
   spec.description   = "This program checks the health of a given website via the CLI. Run bin/gitajob for more info."
+  spec.summary = ""
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
@@ -22,5 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "thor", "~> 0.20.0"
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "rspec", "~> 3.7.0"
+  spec.add_development_dependency "vcr"
+  spec.add_development_dependency "pry"
 end

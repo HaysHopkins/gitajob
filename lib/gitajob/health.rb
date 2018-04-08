@@ -5,15 +5,15 @@ require 'benchmark'
 module Gitajob
   class Health
     def initialize(website, repeat, frequency)
-      @uri = URI.parse(website)
       @website = website
       @repeat = repeat
       @frequency = frequency
     end
 
     def probe
-      times = start_probe
-      format_average_request_time(times)
+      @uri = URI.parse(@website)
+      request_times = start_probe
+      format_average_request_time(request_times)
     rescue Errno::ECONNREFUSED
       puts "Unable to connect. Check your website and try again."
     rescue URI::InvalidURIError
@@ -24,16 +24,17 @@ module Gitajob
 
     def start_probe
       @repeat.times.to_a.map.with_index do |iteration|
-
-        request_time = Benchmark.measure do
-          format_response(make_request)
-        end.real
-
+        request_time = measure_request
         format_request_time(request_time)
         delay_next_request if iteration < @repeat-1
-
         request_time
       end
+    end
+
+    def measure_request
+      Benchmark.measure do
+        format_response(make_request)
+      end.real
     end
 
     def make_request
