@@ -1,5 +1,7 @@
 require "bundler/setup"
 require "gitajob"
+require "webmock/rspec"
+require "vcr"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -11,4 +13,10 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+end
+
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/cassettes"
+  config.default_cassette_options = {record: :once}
+  config.hook_into :webmock
 end
