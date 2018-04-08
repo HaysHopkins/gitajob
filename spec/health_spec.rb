@@ -15,7 +15,7 @@ RSpec.describe Gitajob::Health do
     VCR.use_cassette("gitlab_response") do
       expect {
         Gitajob::Health.new(website, repeat, frequency).probe
-      }.to output(/After probing https:\/\/about.gitlab.com 1 times over the course of 0 seconds, the average request time/).to_stdout
+      }.to output(/After probing https:\/\/about.gitlab.com 1 times over the course of 0 seconds, the average request time was/).to_stdout
     end
   end
 end

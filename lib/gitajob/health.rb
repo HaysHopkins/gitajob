@@ -54,7 +54,7 @@ module Gitajob
     end
 
     def format_average_request_time(times)
-      puts "After probing #{@website} #{@repeat} times over the course of #{(@repeat-1) * @frequency} seconds, the average request time #{times.sum / times.size}."
+      puts "After probing #{@website} #{@repeat} times over the course of #{(@repeat-1) * @frequency} seconds, the average request time was #{times.sum / times.size}."
     end
   end
 end
